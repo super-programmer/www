@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .radius_avatar {
+            display: inline-block;
+            background-color: #fff;
+            padding: 3px;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            overflow: hidden;
+            vertical-align: middle
+        }
+
+        .radius_avatar img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            background-color: #eee
+        }
+
+        .rich_media_inner {
+            word-wrap: break-word;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto
+        }
+
+        .rich_media_area_primary {
+            padding: 20px 16px 12px;
+            padding: calc(20px + constant(safe-area-inset-top)) calc(16px + constant(safe-area-inset-right)) 12px calc(16px + constant(safe-area-inset-left));
+            padding: calc(20px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) 12px calc(16px + env(safe-area-inset-left));
+            background-color: #fafafa
+        }
+
+        .rich_media_area_primary.voice {
+            padding-top: 66px
+        }
+
+        .rich_media_area_primary .weui-loadmore_line .weui-loadmore__tips {
+            color: rgba(0, 0, 0, 0.3);
+            background-color: #fafafa
+        }
+
+        .rich_media_area_extra {
+            padding: 0 16px 16px;
+            padding: 0 calc(16px + constant(safe-area-inset-right)) calc(16px + constant(safe-area-inset-bottom)) calc(16px + constant(safe-area-inset-left));
+            padding: 0 calc(16px + env(safe-area-inset-right)) calc(16px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left))
+        }
+
+        .rich_media_extra {
+            padding-top: 30px
+        }
+
+        .mpda_bottom_container .rich_media_extra {
+            padding-top: 24px
+        }
+
+        .mpda_bottom_container .rich_media_extra .mpad_more_list {
+            right: -10px
+        }
+
+        html {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            line-height: 1.6
+        }
+
+        body {
+            -webkit-touch-callout: none;
+            font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+            color: #333;
+            background-color: #f2f2f2;
+            letter-spacing: .034em
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 400;
+            font-size: 16px
+        }
+
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        a {
+            color: #576b95;
+            text-decoration: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+        }
+
+        .rich_media_title {
+            font-size: 22px;
+            line-height: 1.4;
+            margin-bottom: 14px
+        }
+
+        @supports (-webkit-overflow-scrolling:touch) {
+            .rich_media_title {
+                font-weight: 700
+            }
+        }
+
+        .rich_media_meta_list {
+            margin-bottom: 22px;
+            line-height: 20px;
+            font-size: 0;
+            word-wrap: break-word;
+            word-break: break-all
+        }
+
+        .rich_media_meta_list em {
+            font-style: normal
+        }
+
+        .rich_media_meta {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 10px 10px 0;
+            font-size: 15px;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+        }
+
+        .rich_media_meta.icon_appmsg_tag {
+            margin-right: 4px
+        }
+
+        .rich_media_meta.meta_tag_text {
+            margin-right: 0
+        }
+
+        .rich_media_meta_primary {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 15px
+        }
+
+        .meta_original_tag {
+            padding: 0 .5em;
+            font-size: 12px;
+            line-height: 1.4;
+            background-color: #f2f2f2;
+            color: #888
+        }
+
+        .meta_enterprise_tag img {
+            width: 30px;
+            height: 30px !important;
+            display: block;
+            position: relative;
+            margin-top: -3px;
+            border: 0
+        }
+
+        .rich_media_meta_link {
+            color: #576b95
+        }
+
+        .rich_media_meta_text {
+            color: rgba(0, 0, 0, 0.3)
+        }
+
+        .rich_media_meta_text.rich_media_meta_split {
+            padding-left: 10px
+        }
+
+        .rich_media_meta_text.rich_media_meta_split:before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -6px;
+            content: ' ';
+            display: block;
+            border-left: 1px solid #888;
+            width: 200%;
+            height: 130%;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0
+        }
+
+        .rich_media_meta_text.article_modify_tag {
+            position: relative
+        }
+
+        .rich_media_meta_nickname {
+            position: relative
+        }
+
+        .rich_media_thumb_wrp {
+            margin-bottom: 6px
+        }
+
+        .rich_media_thumb_wrp .original_img_wrp {
+            display: block
+        }
+
+        .rich_media_thumb {
+            display: block;
+            width: 100%
+        }
+
+        .rich_media_content {
+            overflow: hidden;
+            color: #333;
+            font-size: 17px;
+            word-wrap: break-word;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+            text-align: justify;
+            position: relative;
+            z-index: 0
+        }
+
+        .rich_media_content * {
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            -webkit-box-sizing: border-box !important;
+            word-wrap: break-word !important
+        }
+
+        .rich_media_content p {
+            clear: both;
+            min-height: 1em
+        }
+
+        .rich_media_content em {
+            font-style: italic
+        }
+
+        .rich_media_content fieldset {
+            min-width: 0
+        }
+
+        .rich_media_content .list-paddingleft-1, .rich_media_content .list-paddingleft-2, .rich_media_content .list-paddingleft-3 {
+            padding-left: 2.2em
+        }
+
+        .rich_media_content .list-paddingleft-1 .list-paddingleft-2, .rich_media_content .list-paddingleft-2 .list-paddingleft-2, .rich_media_content .list-paddingleft-3 .list-paddingleft-2 {
+            padding-left: 30px
+        }
+
+        .rich_media_content .list-paddingleft-1 {
+            padding-left: 1.2em
+        }
+
+        .rich_media_content .list-paddingleft-3 {
+            padding-left: 3.2em
+        }
+
+        .rich_media_content .code-snippet, .rich_media_content .code-snippet__fix {
+            max-width: 1000% !important
+        }
+
+        .rich_media_content .code-snippet *, .rich_media_content .code-snippet__fix * {
+            max-width: 1000% !important
+        }
+
+        .rich_media_content img {
+            height: auto !important
+        }
+
+        @media screen and (min-width: 1024px) {
+            .rich_media_area_primary_inner, .rich_media_area_extra_inner {
+                max-width: 677px;
+                margin-left: auto;
+                margin-right: auto
+            }
+
+            .rich_media_area_primary {
+                padding-top: 32px
+            }
+        }
+
+        blockquote {
+            padding-left: 10px;
+            border-left: 3px solid #dbdbdb;
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 15px;
+            padding-top: 4px;
+            margin: 1em 0
+        }
+
+        .blockquote_info {
+            color: rgba(0, 0, 0, 0.3);
+            margin-top: 1.1764705882352942em;
+            word-wrap: break-word;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto
+        }
+
+        .blockquote_article {
+            display: block
+        }
+
+        .appmsg_share_notice {
+            font-size: 16px;
+            color: #888;
+            position: relative;
+            padding: 1.25em 0;
+            margin-bottom: 1.75em
+        }
+
+        .appmsg_share_notice:before {
+            content: " ";
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            height: 1px;
+            border-top: 1px solid #dfdfdf;
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5)
+        }
+
+        .appmsg_share_notice:after {
+            content: " ";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 1px;
+            border-bottom: 1px solid #dfdfdf;
+            -webkit-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5)
+        }
+
+        .appmsg_share_notice_hd {
+            font-weight: 700;
+            padding-bottom: .2em
+        }
+
+        .dn {
+            display: none
+        }
+
+        .qa__card {
+            font-size: 15px;
+            margin: 20px 0;
+            background-color: rgba(0, 0, 0, 0.03)
+        }
+
+        .qa__card .qa__item {
+            padding: 24px 0 16px 16px
+        }
+
+        .qa__card .qa__item-question {
+            padding-right: 16px
+        }
+
+        .qa__card .qa__item-question-info {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 9px;
+            font-size: 15px
+        }
+
+        .qa__card .qa__item-info-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-right: 8px
+        }
+
+        .qa__card .qa__item-info-avatar img {
+            width: 100%
+        }
+
+        .qa__card .qa__item-info-account {
+            margin-right: .5em
+        }
+
+        .qa__card .qa__item-question {
+            margin-bottom: 24px
+        }
+
+        .qa__card .qa__answers-question-title {
+            font-size: 15px;
+            margin-bottom: 8px
+        }
+
+        .qa__card .qa__detail-question-content {
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 15px
+        }
+
+        .qa__card .qa__item-reply-content {
+            padding-right: 16px
+        }
+
+        .qa__card .qa__item-reply-head {
+            color: rgba(0, 0, 0, 0.6);
+            position: relative;
+            padding-left: 10px;
+            margin-bottom: 9px
+        }
+
+        .qa__card .qa__item-reply-head::before {
+            content: "";
+            display: block;
+            width: 2px;
+            height: 15px;
+            background-color: #1aad19;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%)
+        }
+
+        .qa__card .qa__detail-question-imgs {
+            margin-top: 4px;
+            color: #576b95
+        }
+
+        .qa__card .qa__show_detail {
+            position: relative;
+            padding: 16px 0;
+            display: block;
+            margin-top: 16px;
+            margin-bottom: -16px;
+            color: #576b95
+        }
+
+        .qa__card .qa__show_detail::before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+            left: 0;
+            top: 0;
+            -webkit-transform-origin: left top;
+            transform-origin: left top
+        }
+
+        .qa__card .qa__show_detail::after {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid rgba(0, 0, 0, 0.3);
+            border-right: 2px solid rgba(0, 0, 0, 0.3);
+            -webkit-transform: rotate(45deg) translateY(-50%);
+            transform: rotate(45deg) translateY(-50%);
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            border-radius: 2px;
+            -webkit-transform-origin: center;
+            transform-origin: center
+        }
+
+        .qa__card-empty {
+            line-height: 115px;
+            color: rgba(0, 0, 0, 0.3);
+            text-align: center
+        }
+
+        .code-snippet {
+            margin: 10px 0;
+            display: block;
+            overflow-x: auto;
+            font-size: 14px;
+            padding: 1em 1em 1em 3em;
+            color: #333;
+            position: relative;
+            background-color: #fafafa;
+            border: 1px solid #f0f0f0;
+            border-radius: 2px;
+            counter-reset: line;
+            white-space: normal;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .code-snippet code {
+            text-align: left;
+            font-size: 14px;
+            display: block;
+            white-space: pre-wrap;
+            position: relative;
+            font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace
+        }
+
+        .code-snippet code::before {
+            position: absolute;
+            min-width: 1.5em;
+            text-align: right;
+            left: -2.5em;
+            counter-increment: line;
+            content: counter(line);
+            display: inline;
+            margin-right: 12px;
+            color: rgba(0, 0, 0, 0.15)
+        }
+
+        .code-snippet_nowrap code {
+            white-space: pre;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex
+        }
+
+        .code-snippet__fix {
+            font-size: 14px;
+            margin: 10px 0;
+            display: block;
+            color: #333;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0f0f0;
+            border-radius: 2px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            line-height: 26px
+        }
+
+        .code-snippet__fix pre {
+            overflow-x: auto;
+            padding: 1em;
+            padding-left: 0;
+            white-space: normal;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .code-snippet__fix code {
+            text-align: left;
+            font-size: 14px;
+            display: block;
+            white-space: pre;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            position: relative;
+            font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace
+        }
+
+        .code-snippet__fix .code-snippet__line-index {
+            counter-reset: line;
+            -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+            height: 100%;
+            padding: 1em;
+            list-style-type: none
+        }
+
+        .code-snippet__fix .code-snippet__line-index li {
+            list-style-type: none;
+            text-align: right
+        }
+
+        .code-snippet__fix .code-snippet__line-index li::before {
+            min-width: 1.5em;
+            text-align: right;
+            left: -2.5em;
+            counter-increment: line;
+            content: counter(line);
+            display: inline;
+            color: rgba(0, 0, 0, 0.15)
+        }
+
+        .code-snippet__comment, .code-snippet__quote {
+            color: #afafaf;
+            font-style: italic
+        }
+
+        .code-snippet__keyword, .code-snippet__selector-tag, .code-snippet__subst {
+            color: #ca7d37
+        }
+
+        .code-snippet__number, .code-snippet__literal, .code-snippet__variable, .code-snippet__template-variable, .code-snippet__tag .code-snippet__attr {
+            color: #0e9ce5
+        }
+
+        .code-snippet__string, .code-snippet__doctag {
+            color: #d14
+        }
+
+        .code-snippet__title, .code-snippet__section, .code-snippet__selector-id {
+            color: #d14
+        }
+
+        .code-snippet__subst {
+            font-weight: normal
+        }
+
+        .code-snippet__t…
+    </style>
+</head>
+<body>
+<div id="js_article" class="rich_media">
+    <div id="js_top_ad_area" class="top_banner"></div>
+    <div class="rich_media_inner">
+        <div id="page-content" class="rich_media_area_primary">
+            <div class="rich_media_area_primary_inner">
+
+                <div id="img-content">
+
+                    <div class="rich_media_content " id="js_content">
+
+                        <section style="box-sizing: border-box;background-color: rgb(255, 255, 255);">
+                            <section class="" style="box-sizing: border-box;" powered-by="xiumi.us"><p
+                                    style="text-align: center;"><span
+                                    style="font-size:27px;font-family:微软雅黑,sans-serif;">俞晓鸿</span></p>
+                                <section class=""
+                                         style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;">
+                                    <img class="" src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrUP2ehwEdxQpsPbibibSfoQic5D1d8CJXsPdDUian2TqjNZVBFfqa3V2r5g/640?wx_fmt=jpeg"
+                                         style="vertical-align: middle; box-sizing: border-box; width: 236px !important; height: auto !important; visibility: visible !important;"
+                                         _width="236px"
+                                         ></section>
+                            </section>
+                            <section class="" style="box-sizing: border-box;" powered-by="xiumi.us">
+                                <section class="" style="box-sizing: border-box;"><p
+                                        style="box-sizing: border-box;text-align: center;"><br></p>
+                                    <p style="box-sizing: border-box;text-indent: 2em;">
+                                        俞晓鸿，男，1966年9月29日生，浙江杭州人，我国教育信息化和有效教学的著名专家，国家科技支撑计划研究成果“基于前概念的精准教学”专家工作站首席专家，浙江大学现代教育质量监测与服务研究所所长、研究员。</p>
+                                    <p style="text-indent: 32px;line-height: 1.5em;"><br></p></section>
+                                <p><span style="color: rgb(123, 12, 0);"><strong>主要贡献：</strong></span></p>
+                                <p style="text-indent: 2em;">我国第1个商业网站的总策划</p>
+                                <p style="text-indent: 2em;">我国教育城域网建设和应用理念的提出者</p>
+                                <p style="text-indent: 2em;">精准教学的理论基础—前概念原理的提出者</p>
+                                <p style="text-indent: 2em;">以虔行的脚步深入学校指导真正有效的教学</p>
+                                <section class="" style="box-sizing: border-box;"><p
+                                        style="text-indent: 32px;line-height: 1.5em;"><br></p></section>
+                                <p><span style="color: rgb(123, 12, 0);"><strong>研究领域：</strong></span></p>
+                                <p style="text-indent: 2em;">教育信息化、前概念原理、教学设计、教学大数据及其算法、教学配方、精准的有效的教育</p>
+                                <section class="" style="box-sizing: border-box;"><p
+                                        style="text-indent: 32px;line-height: 1.5em;"><br></p></section>
+                                <p><span style="color: rgb(123, 12, 0);"><strong>主要成就：</strong></span></p>
+                                <p style="text-indent: 2em;">一、1990年至1996年，俞晓鸿研究并提出了物理设计性实验教学方法。该研究成果在<span
+                                        style="color: rgb(255, 0, 0);">中国物理学会会刊</span>《物理教学》1993年第12期<span
+                                        style="color: rgb(255, 0, 0);">第1页</span>上发表，有关该研究的阶段性进展持续在全国或国际会议上做大会特邀报告。经过12次发展完善、100多次补充修订，该成果于1996年获得了国家教委(即当时的教育部)组织评选的全国优秀教育论文<span
+                                        style="color: rgb(255, 0, 0);">一等奖</span>，国家教委副主任王明达同志亲自颁奖。1991年,俞晓鸿被美国物理教师协会吸收为<span
+                                        style="color: rgb(255, 0, 0);">外籍会员</span>。1994年,俞晓鸿作为<span
+                                        style="color: rgb(255, 0, 0);">大会秘书长</span>组织了物理教育国际会议。1999年，俞晓鸿当选为中国物理学会教学委员会<span
+                                        style="color: rgb(255, 0, 0);">委员</span>，2003年，再次当选。</p>
+                                <p><strong><span style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">01 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿用6年时间写了一篇论文,1990-1996</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">02 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿有关设计性实验教学方法的论文在中国物理学会会刊第1页上发表,1993</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">03 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿荣获全国优秀论文一等奖国家教委副主任王明达同志颁奖,1996</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">04 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在浙江大学举行的物理教育国际会议上做大会报告,1994</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">05 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在匈牙利举行的物理教育国际会议上做大会报告,1997</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">06 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在中国物理学会全国代表大会上做大会报告,1999</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">07 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在当选中国物理学会教学委员会委员后与两弹元勋彭桓武院士合影,1999</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">08 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿被吸收为美国物理教师协会外籍会员,1991</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">09 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">美国物理教师协会当时在中国大陆共有3位外籍会员,1991</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">10 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与国际物理教育委员会主席美国物理教师协会主席E.L.Jossem教授在浙大讨论国际会议筹备,1994</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">11 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与国际物理教育委员会副主席国际纯粹与应用物理联合会副主席G.Marx教授在匈牙利,1997</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">12 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与德国物理教育学会主席D.Nachtigall教授在广西师大,1993</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">13 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与日本物理教育学会总干事笠耐教授在日本早稻田大学,2000</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">14 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与我国物理教育前辈恽瑛先生及国际物理教育的前辈们在浙大合影,1994</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">15 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与中国物理学会理事长冯端院士,1999</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">16 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与中国物理学会理事长国家自然科学基金委主任北大校长陈佳洱院士,1999</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">17 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与国家自然科学基金委副主任王乃彦院士,1999</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">18 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与中国物理学会副理事长兼教学委员会主任赵凯华先生,1998</span>
+                                </p>
+                                <p><span style="font-size:15px;font-family:宋体;color:green;">19 </span><span
+                                        style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与中国物理学会教学委员会秘书长高等教育出版社副总编杨再石先生,1998</span>
+                                </p>
+                                <p style="text-align: left;"><img class="rich_pages "
+                                                                  data-croporisrc="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr55Jicntbeml12UnMiaGJSPEXl2zH2PE5heYyVgovlcAqSEiaL4aDaU02A/640?wx_fmt=jpeg"
+                                                                  data-cropx1="0" data-cropx2="725.0000000000001"
+                                                                  data-cropy1="0" data-cropy2="512.0056497175142"
+                                                                  data-ratio="0.7075862068965517" data-s="300,640"
+                                                                  data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrYNqxC3SQzBy8rDgVEuIuTc0qNBSz6Dg4ibIp8KrcfqzcfibJbIO8Csdg/640?wx_fmt=jpeg"
+                                                                  data-type="jpeg" data-w="725"
+                                                                  style="text-indent: 2em; text-align: center; width: 142px !important; height: auto !important; visibility: visible !important;"
+                                                                  _width="142px"
+                                                                  src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrYNqxC3SQzBy8rDgVEuIuTc0qNBSz6Dg4ibIp8KrcfqzcfibJbIO8Csdg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                  crossorigin="anonymous" data-fail="0"><span
+                                        style="text-align: left;text-indent: 2em;">&nbsp;</span><img class="rich_pages "
+                                                                                                     data-ratio="1.3546875"
+                                                                                                     data-s="300,640"
+                                                                                                     data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrJxyhGZG4qn7BjBgSWaJxP5nsFvL6VxWPgePzPONY83ZEPJ8fkzKLbQ/640?wx_fmt=jpeg"
+                                                                                                     data-type="jpeg"
+                                                                                                     data-w="1280"
+                                                                                                     style="text-indent: 2em; text-align: center; width: 74px !important; height: auto !important; visibility: visible !important;"
+                                                                                                     _width="74px"
+                                                                                                     src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrJxyhGZG4qn7BjBgSWaJxP5nsFvL6VxWPgePzPONY83ZEPJ8fkzKLbQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                                     crossorigin="anonymous"
+                                                                                                     data-fail="0"><span
+                                        style="text-align: left;text-indent: 2em;">&nbsp;</span><img class="rich_pages "
+                                                                                                     data-ratio="0.7725"
+                                                                                                     data-s="300,640"
+                                                                                                     data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrRcgUoAR2JNqeeBUb3AINkScoiaNp5BvzQRHkBQibya6uIZSFtNqIErNQ/640?wx_fmt=jpeg"
+                                                                                                     data-type="jpeg"
+                                                                                                     data-w="400"
+                                                                                                     style="text-indent: 2em; text-align: center; width: 129px !important; height: auto !important; visibility: visible !important;"
+                                                                                                     _width="129px"
+                                                                                                     src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrRcgUoAR2JNqeeBUb3AINkScoiaNp5BvzQRHkBQibya6uIZSFtNqIErNQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                                     crossorigin="anonymous"
+                                                                                                     data-fail="0"><span
+                                        style="text-align: left;text-indent: 2em;">&nbsp;</span><img class="rich_pages "
+                                                                                                     data-ratio="0.6675"
+                                                                                                     data-s="300,640"
+                                                                                                     data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr4WNPONb1Z3Z71GxSjticuyd46MPJiaxHt1BLVic1N0TsZGZzu4XesmQUA/640?wx_fmt=jpeg"
+                                                                                                     data-type="jpeg"
+                                                                                                     data-w="400"
+                                                                                                     style="text-indent: 2em; text-align: center; width: 149px !important; height: auto !important; visibility: visible !important;"
+                                                                                                     _width="149px"
+                                                                                                     src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr4WNPONb1Z3Z71GxSjticuyd46MPJiaxHt1BLVic1N0TsZGZzu4XesmQUA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                                     crossorigin="anonymous"
+                                                                                                     data-fail="0">&nbsp;<img
+                                        class="rich_pages "
+                                        data-croporisrc="https://mmbiz.qlogo.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr9ias7vubaQfSnNGazMTmtX2jkQibwCibtq2YzEoPIcv13NQPKvGVKvWfw/0?wx_fmt=jpeg"
+                                        data-cropx1="0" data-cropx2="683.9999999999999" data-cropy1="52.265780730897006"
+                                        data-cropy2="243.14950166112953" data-ratio="0.2777777777777778"
+                                        data-s="300,640"
+                                        data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr3XVQKY6nHORGpUg2qC3lQxvicDel5LOKuuGzia8CqvA1TsadwVqhEvhw/640?wx_fmt=jpeg"
+                                        data-type="jpeg" data-w="684"
+                                        style="text-align: left; width: 382px !important; height: auto !important; visibility: visible !important;"
+                                        _width="382px"
+                                        src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr3XVQKY6nHORGpUg2qC3lQxvicDel5LOKuuGzia8CqvA1TsadwVqhEvhw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                        crossorigin="anonymous" data-fail="0"><span
+                                        style="text-align: left;">&nbsp;</span><img class="rich_pages "
+                                                                                    data-ratio="0.675" data-s="300,640"
+                                                                                    data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrG8ZIoAjygWkZua9oKjlQFXopS8gCvzqk2sAr6Q6U59FN2u396M2TfA/640?wx_fmt=jpeg"
+                                                                                    data-type="jpeg" data-w="400"
+                                                                                    style="text-align: left; width: 154px !important; height: auto !important; visibility: visible !important;"
+                                                                                    _width="154px"
+                                                                                    src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrG8ZIoAjygWkZua9oKjlQFXopS8gCvzqk2sAr6Q6U59FN2u396M2TfA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                    crossorigin="anonymous"
+                                                                                    data-fail="0">&nbsp;<img
+                                        class="rich_pages " data-ratio="0.73" data-s="300,640"
+                                        data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr3ickvIf0aOdLz4d8pDicOia8hQrhoEbS5Gpt29YJDHPqmPOiaZ3dHs1thw/640?wx_fmt=jpeg"
+                                        data-type="jpeg" data-w="400"
+                                        style="text-align: left; width: 143px !important; height: auto !important; visibility: visible !important;"
+                                        _width="143px"
+                                        src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr3ickvIf0aOdLz4d8pDicOia8hQrhoEbS5Gpt29YJDHPqmPOiaZ3dHs1thw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                        crossorigin="anonymous" data-fail="0"><span
+                                        style="text-align: left;">&nbsp;</span><img class="rich_pages "
+                                                                                    data-ratio="0.7342497136311569"
+                                                                                    data-s="300,640"
+                                                                                    data-src="https://mmbiz.qpic.cn/mmbiz_png/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr2FvI3UUicJGicKt4oVAV3cjicBkLvJP2wKywia1kKBr8LJGh9tlQNdwgTQ/640?wx_fmt=gif"
+                                                                                    data-type="gif" data-w="1746"
+                                                                                    style="text-align: left; width: 139px !important; height: auto !important; visibility: visible !important;"
+                                                                                    _width="139px"
+                                                                                    src="https://mmbiz.qpic.cn/mmbiz_png/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr2FvI3UUicJGicKt4oVAV3cjicBkLvJP2wKywia1kKBr8LJGh9tlQNdwgTQ/640?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                    crossorigin="anonymous"
+                                                                                    data-fail="0"><span
+                                        style="text-align: left;">&nbsp;</span><img class="rich_pages "
+                                                                                    data-ratio="1.2838541666666667"
+                                                                                    data-s="300,640"
+                                                                                    data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrfJHcnDytd5kbkR2M2eELJ4czHUlKo8hfdB7Sk1UsZ4FnfUjM6qQbfA/640?wx_fmt=jpeg"
+                                                                                    data-type="jpeg" data-w="768"
+                                                                                    style="text-align: left; width: 81px !important; height: auto !important; visibility: visible !important;"
+                                                                                    _width="81px"
+                                                                                    src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrfJHcnDytd5kbkR2M2eELJ4czHUlKo8hfdB7Sk1UsZ4FnfUjM6qQbfA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                    crossorigin="anonymous"
+                                                                                    data-fail="0"><span
+                                        style="font-size: 12px;">&nbsp;</span><img class="rich_pages "
+                                                                                   data-ratio="0.7425" data-s="300,640"
+                                                                                   data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrkYiaXaNyuAgnibnl7icib2WBRBmQuQ10ep9hOEKLEywefM8Ieb1cdIiaDTw/640?wx_fmt=jpeg"
+                                                                                   data-type="jpeg" data-w="400"
+                                                                                   style="text-align: left; width: 138px !important; height: auto !important; visibility: visible !important;"
+                                                                                   _width="138px"
+                                                                                   src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrkYiaXaNyuAgnibnl7icib2WBRBmQuQ10ep9hOEKLEywefM8Ieb1cdIiaDTw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                   crossorigin="anonymous"
+                                                                                   data-fail="0">&nbsp;<img
+                                        class="rich_pages " data-ratio="0.765" data-s="300,640"
+                                        data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrZlkP9cuicOviaz0b0R115B3sO9Swtm7ZhZbR7lhkgbibzOiczfRAzEF7ug/640?wx_fmt=jpeg"
+                                        data-type="jpeg" data-w="400"
+                                        style="text-align: left; width: 134px !important; height: auto !important; visibility: visible !important;"
+                                        _width="134px"
+                                        src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrZlkP9cuicOviaz0b0R115B3sO9Swtm7ZhZbR7lhkgbibzOiczfRAzEF7ug/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                        crossorigin="anonymous" data-fail="0"><span
+                                        style="text-align: left;">&nbsp;</span><img class="rich_pages "
+                                                                                    data-ratio="0.7127659574468085"
+                                                                                    data-s="300,640"
+                                                                                    data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrvnQTwgCN21Vfgv6XdOnWtraibQtrL0Ma0pxNs68SPLnxsQkljx2qEWg/640?wx_fmt=jpeg"
+                                                                                    data-type="jpeg" data-w="564"
+                                                                                    style="text-align: left; width: 137px !important; height: auto !important; visibility: visible !important;"
+                                                                                    _width="137px"
+                                                                                    src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrvnQTwgCN21Vfgv6XdOnWtraibQtrL0Ma0pxNs68SPLnxsQkljx2qEWg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                    crossorigin="anonymous"
+                                                                                    data-fail="0"><span
+                                        style="text-align: left;">&nbsp;</span><img class="rich_pages "
+                                                                                    data-ratio="0.75" data-s="300,640"
+                                                                                    data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrcba97nJ49b8TCDwbV1uTN55u6P1SgBmbdvUSrPibicsQVY5ZeAFJQGQw/640?wx_fmt=jpeg"
+                                                                                    data-type="jpeg" data-w="400"
+                                                                                    style="text-align: left; width: 132px !important; height: auto !important; visibility: visible !important;"
+                                                                                    _width="132px"
+                                                                                    src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrcba97nJ49b8TCDwbV1uTN55u6P1SgBmbdvUSrPibicsQVY5ZeAFJQGQw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                    crossorigin="anonymous"
+                                                                                    data-fail="0"><span
+                                        style="text-align: left;">&nbsp;</span><img class="rich_pages "
+                                                                                    data-ratio="0.8314606741573034"
+                                                                                    data-s="300,640"
+                                                                                    data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrN5JrehuNwdPEExcTBUH1F7Og40uv9Br3wztl7ib84LECppcIoZcslUQ/640?wx_fmt=jpeg"
+                                                                                    data-type="jpeg" data-w="534"
+                                                                                    style="text-align: left; width: 119px !important; height: auto !important; visibility: visible !important;"
+                                                                                    _width="119px"
+                                                                                    src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrN5JrehuNwdPEExcTBUH1F7Og40uv9Br3wztl7ib84LECppcIoZcslUQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                    crossorigin="anonymous"
+                                                                                    data-fail="0">&nbsp;<img
+                                        class="rich_pages " data-ratio="0.675" data-s="300,640"
+                                        data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrpvTLybM1Ja0q6c50yWNL2yd6RyIzDp0LtZYbhwxH15YkogQtBCNJJA/640?wx_fmt=jpeg"
+                                        data-type="jpeg" data-w="400"
+                                        style="text-align: left; width: 145px !important; height: auto !important; visibility: visible !important;"
+                                        _width="145px"
+                                        src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrpvTLybM1Ja0q6c50yWNL2yd6RyIzDp0LtZYbhwxH15YkogQtBCNJJA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                        crossorigin="anonymous" data-fail="0"><span
+                                        style="text-align: left;">&nbsp;</span><img class="rich_pages " data-ratio="0.7"
+                                                                                    data-s="300,640"
+                                                                                    data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrQ9W206p6BgDuDTWy8M3p0haJq38V1WXRZNxOwJwoVteP7TiaPaBjSCQ/640?wx_fmt=jpeg"
+                                                                                    data-type="jpeg" data-w="400"
+                                                                                    style="text-align: left; width: 142px !important; height: auto !important; visibility: visible !important;"
+                                                                                    _width="142px"
+                                                                                    src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrQ9W206p6BgDuDTWy8M3p0haJq38V1WXRZNxOwJwoVteP7TiaPaBjSCQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                    crossorigin="anonymous"
+                                                                                    data-fail="0"><span
+                                        style="text-align: left;">&nbsp;</span><img class="rich_pages "
+                                                                                    data-ratio="0.7522658610271903"
+                                                                                    data-s="300,640"
+                                                                                    data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrDvpKBQ2ncW9s4icQdr1lno8ngrhfvmeZWBXm3rcSRTDCcIIlRlJpyBQ/640?wx_fmt=jpeg"
+                                                                                    data-type="jpeg" data-w="331"
+                                                                                    style="text-align: left; width: 132px !important; height: auto !important; visibility: visible !important;"
+                                                                                    _width="132px"
+                                                                                    src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrDvpKBQ2ncW9s4icQdr1lno8ngrhfvmeZWBXm3rcSRTDCcIIlRlJpyBQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                    crossorigin="anonymous"
+                                                                                    data-fail="0">&nbsp;<img
+                                        class="rich_pages " data-ratio="0.715" data-s="300,640"
+                                        data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr8fm4w9cQfMzCiacHpr3Da0K5qho11yiaT9byZRzp70kKicNiaAicVFsaxlA/640?wx_fmt=jpeg"
+                                        data-type="jpeg" data-w="400"
+                                        style="text-align: left; width: 144px !important; height: auto !important; visibility: visible !important;"
+                                        _width="144px"
+                                        src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr8fm4w9cQfMzCiacHpr3Da0K5qho11yiaT9byZRzp70kKicNiaAicVFsaxlA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                        crossorigin="anonymous" data-fail="0"><span
+                                        style="text-align: left;">&nbsp;</span><img class="rich_pages "
+                                                                                    data-ratio="0.6675" data-s="300,640"
+                                                                                    data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr3x15jq30fLLXUKeXhNia1hlUicsdNz0SIdDxlUrauiahOJ5bTKzTxesAg/640?wx_fmt=jpeg"
+                                                                                    data-type="jpeg" data-w="400"
+                                                                                    style="text-align: left; width: 154px !important; height: auto !important; visibility: visible !important;"
+                                                                                    _width="154px"
+                                                                                    src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr3x15jq30fLLXUKeXhNia1hlUicsdNz0SIdDxlUrauiahOJ5bTKzTxesAg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                    crossorigin="anonymous"
+                                                                                    data-fail="0"></p>
+                                <p style="text-indent: 2em;"><br></p>
+                                <p style="text-indent: 2em;">
+                                    二、1994年，俞晓鸿在筹备国际会议期间敏锐地发现美国和加拿大正在使用Internet(即因特网\互联网)连接学校，打造教育的信息高速公路。1995年，俞晓鸿因此参与马云创建的<span
+                                        style="color: rgb(255, 0, 0);">我国第1个</span>商业网站-中国黄页(即阿里巴巴的前身)的建设并担任<span
+                                        style="color: rgb(255, 0, 0);">第1任</span>总策划，具体负责企划、科普宣传、巡回演讲、地推、代理商培训、网页编排、广告摄影、内刊主编、对外咨询等，并于当年与马云夫人张瑛一起拿到了<span
+                                        style="color: rgb(255, 0, 0);">我国第1单</span>不靠关系仅凭骑着自行车地推获得的互联网信息发布收入(2张网页共2万元)，由此引领了<span
+                                        style="color: rgb(255, 0, 0);">我国第1波</span>互联网应用的浪潮。</p>
+                                <section class="" style="box-sizing: border-box;"><p><strong><span
+                                        style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">20 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">中国第1个商业网站-中国黄页的首页(当时的浏览器为Netscape),1995</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">21 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿担任中国黄页第1任总策划,1995</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">22 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与马云张瑛在杭州金地大厦3308号,1995</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">23 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">中国第1单仅凭地推获得的互联网信息发布收入来自杭州雅士达服装厂,1995</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">24 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与马云何一兵何向阳等深夜在金地大厦大堂一角开会讨论工作,1995</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">25 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿率中国黄页地推团队巡回演讲并在当年就实现了收支平衡,1996</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">26 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在做“Internet走进中国”大型演讲时座无虚席,1997</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">27 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">中国黄页全体职员合影,1997</span>
+                                    </p>
+                                    <p style="text-align: left;"><img class="rich_pages " data-ratio="0.815"
+                                                                      data-s="300,640"
+                                                                      data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrURCEW1uUcjXW0VHYP99TefHR4F79LYjqoO3U2dlvpVmYC2dGLtlr6g/640?wx_fmt=jpeg"
+                                                                      data-type="jpeg" data-w="400"
+                                                                      style="text-align: center; width: 141px !important; height: auto !important; visibility: visible !important;"
+                                                                      _width="141px"
+                                                                      src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrURCEW1uUcjXW0VHYP99TefHR4F79LYjqoO3U2dlvpVmYC2dGLtlr6g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                      crossorigin="anonymous" data-fail="0"><span
+                                            style="text-align: center;">&nbsp;</span><img class="rich_pages "
+                                                                                          data-ratio="0.6905829596412556"
+                                                                                          data-s="300,640"
+                                                                                          data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvra3AB8aO2CYHmJhxZJ3aLdf17UxI9lo7AvWn1rLWCibHEt70l6adYxGA/640?wx_fmt=jpeg"
+                                                                                          data-type="jpeg" data-w="669"
+                                                                                          style="text-align: center; width: 165px !important; height: auto !important; visibility: visible !important;"
+                                                                                          _width="165px"
+                                                                                          src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvra3AB8aO2CYHmJhxZJ3aLdf17UxI9lo7AvWn1rLWCibHEt70l6adYxGA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                          crossorigin="anonymous"
+                                                                                          data-fail="0"><span
+                                            style="text-align: center;">&nbsp;</span><img class="rich_pages "
+                                                                                          data-ratio="0.5"
+                                                                                          data-s="300,640"
+                                                                                          data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrUbDwErXXib9fBhM73zR8HniaiczKZC9TmzQA02D7Mvmd9bPF3b11Kw12g/640?wx_fmt=jpeg"
+                                                                                          data-type="jpeg" data-w="400"
+                                                                                          style="text-align: center; width: 226px !important; height: auto !important; visibility: visible !important;"
+                                                                                          _width="226px"
+                                                                                          src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrUbDwErXXib9fBhM73zR8HniaiczKZC9TmzQA02D7Mvmd9bPF3b11Kw12g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                          crossorigin="anonymous"
+                                                                                          data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.7175" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrduYtA58D5nFlKotggaud6oibXfSfPWIXkOKc2dTmkNpCicTWvA65xZgA/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="400"
+                                            style="text-align: center; width: 153px !important; height: auto !important; visibility: visible !important;"
+                                            _width="153px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrduYtA58D5nFlKotggaud6oibXfSfPWIXkOKc2dTmkNpCicTWvA65xZgA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.5"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr1Eibibs9BMTyeIkARa2pLmapeics5yB5HoYpic5VOO54eYayUprNwsxAiaw/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="400"
+                                                                                             style="text-align: center; width: 220px !important; height: auto !important; visibility: visible !important;"
+                                                                                             _width="220px"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr1Eibibs9BMTyeIkARa2pLmapeics5yB5HoYpic5VOO54eYayUprNwsxAiaw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0"><span
+                                            style="text-align: center;">&nbsp;</span><img class="rich_pages "
+                                                                                          data-ratio="0.6475"
+                                                                                          data-s="300,640"
+                                                                                          data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrOpk23BNaq9sHhZdfmFa4hJafQGiaFj89ABVWft6ETO6eJVujrjtf3mg/640?wx_fmt=jpeg"
+                                                                                          data-type="jpeg" data-w="400"
+                                                                                          style="text-align: center; width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                                          data-backw="203"
+                                                                                          data-backh="132"
+                                                                                          data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrOpk23BNaq9sHhZdfmFa4hJafQGiaFj89ABVWft6ETO6eJVujrjtf3mg/640?wx_fmt=jpeg"
+                                                                                          _width="100%"
+                                                                                          src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrOpk23BNaq9sHhZdfmFa4hJafQGiaFj89ABVWft6ETO6eJVujrjtf3mg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                          crossorigin="anonymous"
+                                                                                          data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.47320061255742724" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrB2KyCILQQVhXx3LkiaLB1quR5XzF7kTDcjHYGCEGiaIXBv9KIkiaSQffA/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="653"
+                                            style="text-align: center; width: 100% !important; height: auto !important; visibility: visible !important;"
+                                            data-backw="270" data-backh="128"
+                                            data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrB2KyCILQQVhXx3LkiaLB1quR5XzF7kTDcjHYGCEGiaIXBv9KIkiaSQffA/640?wx_fmt=jpeg"
+                                            _width="100%"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrB2KyCILQQVhXx3LkiaLB1quR5XzF7kTDcjHYGCEGiaIXBv9KIkiaSQffA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0"></p></section>
+                                <p style="text-indent: 2em;"><br></p>
+                                <p style="text-indent: 2em;">三、1997年，俞晓鸿创建了<span
+                                        style="color: rgb(255, 0, 0);">我国第1个</span>学科教育网站-中国物理教育网。该新闻在中央电视台第1、2、4频道播出4次，在中国教育电视台以专题片形式先后播出6次，由此引领了我国互联网在学科教育领域广泛应用的浪潮。1998年，俞晓鸿作为推动互联网兴起和在教育上应用的特殊人才被<span
+                                        style="color: rgb(255, 0, 0);">浙江大学</span>引进，专门从事互联网教学、研究及管理，其面向浙江大学多个院系的选修课程“Internet及应用”于次年获得浙江大学优秀教学成果教学课件<span
+                                        style="color: rgb(255, 0, 0);">一等奖</span>。</p>
+                                <section class="" style="box-sizing: border-box;"><p><span
+                                        style="color: rgb(171, 25, 66);"></span></p>
+                                    <p><strong><span
+                                            style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">28 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿创建的中国物理教育网的首页(含有搜索引擎和电子货币系统),1997</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">29 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿受中国物理学会教学委员会委托担任中国物理教育网研究管理组组长,1997</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">30 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿担任中国物理教育网网络中心副主任(主持工作),1998</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">31 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">中央电视台第1频道播出了中国物理教育网的新闻,1998</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">32 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在浙江大学从事互联网教学和研究并获浙江大学教学成果教学课件1等奖,1999</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">33 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">中国物理教育网网络中心从浙江大学迁至《物理通报》杂志社后与社长吴祖仁教授合影,1999</span>
+                                    </p>
+                                    <p style="text-align: left;"><img class="rich_pages "
+                                                                      data-ratio="0.6926829268292682" data-s="300,640"
+                                                                      data-src="https://mmbiz.qpic.cn/mmbiz_png/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrqQFBzM3ua0foNe9CXBl56tyJmeB1ykbHtePJu48IoZDmd4Yl0acYYg/640?wx_fmt=gif"
+                                                                      data-type="gif" data-w="820"
+                                                                      style="text-align: center; width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                      data-backw="198" data-backh="138"
+                                                                      data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_png/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrqQFBzM3ua0foNe9CXBl56tyJmeB1ykbHtePJu48IoZDmd4Yl0acYYg/640?wx_fmt=gif"
+                                                                      _width="100%"
+                                                                      src="https://mmbiz.qpic.cn/mmbiz_png/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrqQFBzM3ua0foNe9CXBl56tyJmeB1ykbHtePJu48IoZDmd4Yl0acYYg/640?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                      crossorigin="anonymous" data-fail="0"><span
+                                            style="text-align: center;">&nbsp;</span><img class="rich_pages "
+                                                                                          data-ratio="1.22109375"
+                                                                                          data-s="300,640"
+                                                                                          data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrs2q0R8vxBzbGpns1tFAibKoOzWKibCl7OpDhlxicIF5CSKTiaPqkKZ04ibA/640?wx_fmt=jpeg"
+                                                                                          data-type="jpeg" data-w="1280"
+                                                                                          style="text-align: center; width: 113px !important; height: auto !important; visibility: visible !important;"
+                                                                                          _width="113px"
+                                                                                          src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrs2q0R8vxBzbGpns1tFAibKoOzWKibCl7OpDhlxicIF5CSKTiaPqkKZ04ibA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                          crossorigin="anonymous"
+                                                                                          data-fail="0"><span
+                                            style="text-align: center;">&nbsp;</span><img class="rich_pages "
+                                                                                          data-ratio="0.6291390728476821"
+                                                                                          data-s="300,640"
+                                                                                          data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr2rn08pTyLjjXlXziauNRzCEkSMB8OPqEBPdY7mMVricNo8VP4FJ8LMibA/640?wx_fmt=jpeg"
+                                                                                          data-type="jpeg" data-w="604"
+                                                                                          style="text-align: center; width: 197px !important; height: auto !important; visibility: visible !important;"
+                                                                                          _width="197px"
+                                                                                          src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr2rn08pTyLjjXlXziauNRzCEkSMB8OPqEBPdY7mMVricNo8VP4FJ8LMibA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                          crossorigin="anonymous"
+                                                                                          data-fail="0"><img
+                                            class="rich_pages " data-ratio="0.63" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvreRo6d768A2aeoKnrpic0YNyfjMTQTy0OFTJevIlXjkIYlRwdyOpH7Hw/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="400"
+                                            style="text-align: center; width: 182px !important; height: auto !important; visibility: visible !important;"
+                                            _width="182px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvreRo6d768A2aeoKnrpic0YNyfjMTQTy0OFTJevIlXjkIYlRwdyOpH7Hw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0"><span style="text-align: center;">&nbsp;</span><img
+                                            class="rich_pages " data-ratio="0.75" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr3aowT7QJ6cl3w9c51N6a1G0ZK6agJQq3QjERdwRmnF4zdFtrK6vrlQ/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="400"
+                                            style="text-align: center; width: 165px !important; height: auto !important; visibility: visible !important;"
+                                            _width="165px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr3aowT7QJ6cl3w9c51N6a1G0ZK6agJQq3QjERdwRmnF4zdFtrK6vrlQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0"></p></section>
+                                <p style="text-indent: 2em;"><br></p>
+                                <p style="text-indent: 2em;">四、1999年8月，俞晓鸿发起并组织了<span style="color: rgb(255, 0, 0);">全国第1届</span>物理课件大赛，这是我国第1次全国规模专业学科的课件大赛，由此引领了我国信息技术与学科教学深度融合的浪潮。此后，俞晓鸿还参与组织了后续历届全国物理课件大赛，提出并自始至终坚持<span
+                                        style="color: rgb(255, 0, 0);">正确的评价导向</span>。1999年11月，中国物理学会第7届理事会教学委员会全体(扩大)会议对俞晓鸿多年来为中国物理教育事业做出的贡献，以<span
+                                        style="color: rgb(255, 0, 0);">全体起立集体鼓掌</span>的方式表示敬意。</p>
+                                <section class="" style="box-sizing: border-box;"><p><span
+                                        style="color: rgb(171, 25, 66);"></span></p>
+                                    <p><strong><span
+                                            style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">34 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在全国第1届物理课件大赛上担任评委正在评审复旦大学钟万衡教授的课件,1999</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">35 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在全国第1届物理课件大赛闭幕式上代表组委会和评委会讲话,1999</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">36 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">中国物理学会第7届理事会教学委员会全体(扩大)会议代表合影,1999</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">37 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿担任中国物理学会全国物理课件与素材中心主任,2000</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">38 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">全国第1届物理课件大赛代表合影,1999</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">39 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">全国第2届物理课件大赛代表合影,2000</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">30 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">全国第3届物理课件大赛代表合影,2001</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">41 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">全国第4届物理课件大赛代表合影,2002</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">42 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">全国第5届物理课件大赛代表合影,2004</span>
+                                    </p>
+                                    <p style="text-align: left;"><img class="rich_pages "
+                                                                      data-ratio="0.37721518987341773" data-s="300,640"
+                                                                      data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrzHo5iar1icibT9WRyJar0pwDlPAnkdZnwe6hwe3dn7eFqwXHXjAg64rbQ/640?wx_fmt=jpeg"
+                                                                      data-type="jpeg" data-w="395"
+                                                                      style="width: 262px !important; height: auto !important; visibility: visible !important;"
+                                                                      _width="262px"
+                                                                      src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrzHo5iar1icibT9WRyJar0pwDlPAnkdZnwe6hwe3dn7eFqwXHXjAg64rbQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                      crossorigin="anonymous" data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.5675" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrcf4chYiayS7YHOl0wYQE6ib3996LVrLKicWxfMwrknOQVRFyHVQ9MSCzQ/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="400"
+                                            style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                            data-backw="220" data-backh="125"
+                                            data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrcf4chYiayS7YHOl0wYQE6ib3996LVrLKicWxfMwrknOQVRFyHVQ9MSCzQ/640?wx_fmt=jpeg"
+                                            _width="100%"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrcf4chYiayS7YHOl0wYQE6ib3996LVrLKicWxfMwrknOQVRFyHVQ9MSCzQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.3413333333333333"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrMoicLKj0W3Ao5hObW4A64ewBHibfTfR4wM9ad1QBhzggqoicOPdicibhU8g/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="750"
+                                                                                             style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                                             data-backw="334"
+                                                                                             data-backh="114"
+                                                                                             data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrMoicLKj0W3Ao5hObW4A64ewBHibfTfR4wM9ad1QBhzggqoicOPdicibhU8g/640?wx_fmt=jpeg"
+                                                                                             _width="100%"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrMoicLKj0W3Ao5hObW4A64ewBHibfTfR4wM9ad1QBhzggqoicOPdicibhU8g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.5283333333333333" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrFVZ0eWKdsIoKibEZk9PLgJR2RMtHUWTTVEQX1cvJmsxhd45w1982vJw/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="600"
+                                            style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                            data-backw="225" data-backh="119"
+                                            data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrFVZ0eWKdsIoKibEZk9PLgJR2RMtHUWTTVEQX1cvJmsxhd45w1982vJw/640?wx_fmt=jpeg"
+                                            _width="100%"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrFVZ0eWKdsIoKibEZk9PLgJR2RMtHUWTTVEQX1cvJmsxhd45w1982vJw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.31"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrYmSbcPzib7yaWrm8BWZhx8cl7iaJWq9alXYvqjlUFhEIE0BsEr55D6mQ/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="900"
+                                                                                             style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                                             data-backw="338"
+                                                                                             data-backh="105"
+                                                                                             data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrYmSbcPzib7yaWrm8BWZhx8cl7iaJWq9alXYvqjlUFhEIE0BsEr55D6mQ/640?wx_fmt=jpeg"
+                                                                                             _width="100%"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrYmSbcPzib7yaWrm8BWZhx8cl7iaJWq9alXYvqjlUFhEIE0BsEr55D6mQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.49375" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrhCyEGgKePGBAahQr6mDnGmL6phTswTQOt2IfnTmQftoI08iajVdU8bA/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="800"
+                                            style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                            data-backw="339" data-backh="168"
+                                            data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrhCyEGgKePGBAahQr6mDnGmL6phTswTQOt2IfnTmQftoI08iajVdU8bA/640?wx_fmt=jpeg"
+                                            _width="100%"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrhCyEGgKePGBAahQr6mDnGmL6phTswTQOt2IfnTmQftoI08iajVdU8bA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.65078125"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrObbr9TXcD7F2rPIFo4N9ogHMNYxXoibLvrAm8hKgibnWNaIIBEe94zbg/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="1280"
+                                                                                             style="text-align: left; width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                                             data-backw="192"
+                                                                                             data-backh="125"
+                                                                                             data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrObbr9TXcD7F2rPIFo4N9ogHMNYxXoibLvrAm8hKgibnWNaIIBEe94zbg/640?wx_fmt=jpeg"
+                                                                                             _width="100%"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrObbr9TXcD7F2rPIFo4N9ogHMNYxXoibLvrAm8hKgibnWNaIIBEe94zbg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.4706666666666667" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrYaq4ALCSCIopsTVAtibaSgDEeE1eylDW9libXOPbpVicL1fIiciawZ8yOlA/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="750"
+                                            style="text-align: left; width: 100% !important; height: auto !important; visibility: visible !important;"
+                                            data-backw="247" data-backh="116"
+                                            data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrYaq4ALCSCIopsTVAtibaSgDEeE1eylDW9libXOPbpVicL1fIiciawZ8yOlA/640?wx_fmt=jpeg"
+                                            _width="100%"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrYaq4ALCSCIopsTVAtibaSgDEeE1eylDW9libXOPbpVicL1fIiciawZ8yOlA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.32890625"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrAo1vHPU5RFbG4zfiaCgel4W5resTuZPfqsS5a3Lqmdib45C6obq8tbcw/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="1280"
+                                                                                             style="text-align: left; width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                                             data-backw="449"
+                                                                                             data-backh="147"
+                                                                                             data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrAo1vHPU5RFbG4zfiaCgel4W5resTuZPfqsS5a3Lqmdib45C6obq8tbcw/640?wx_fmt=jpeg"
+                                                                                             _width="100%"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrAo1vHPU5RFbG4zfiaCgel4W5resTuZPfqsS5a3Lqmdib45C6obq8tbcw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0"></p>
+                                </section>
+                                <p style="text-indent: 2em;"><br></p>
+                                <p style="text-indent: 2em;">五、2000年，俞晓鸿设计并领导建设了<span style="color: rgb(255, 0, 0);">我国第1批</span>教育城域网。次年，《中国教育报》以<span
+                                        style="color: rgb(255, 0, 0);">整版篇幅</span>刊登了俞晓鸿的文章“城域教育网,开启教育信息化新纪元”，由此打开了我国教育城域网<span
+                                        style="color: rgb(255, 0, 0);">千亿规模</span>的市场。该文后来成为<span
+                                        style="color: rgb(255, 0, 0);">全国400多个</span>城域网及其包含的数万个校园网建设的招标指导性文件以及后续应用反思总结的重要依据，由此引领了我国教育信息化有史以来<span
+                                        style="color: rgb(255, 0, 0);">最大一次</span>浪潮。</p>
+                                <section class="" style="box-sizing: border-box;"><p><strong><span
+                                        style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">43 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿设计并领导建设了我国第1个教育城域网,2000</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">44</span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">《中国教育报》以整版篇幅刊登俞晓鸿关于城域网建设和应用的论述,2001</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">45 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在教育部等单位组织的全国论坛开幕式上做城域网建设和应用的主旨报告,2001</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">46 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿与教育部副部长周远清同志交流,2001</span>
+                                    </p>
+                                    <p style="text-align: left;"><img class="rich_pages "
+                                                                      data-ratio="0.6666666666666666" data-s="300,640"
+                                                                      data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr6icUjV3PLDC61aRgWkicrcQLvR1zkNxEZ9pReLXRGePQxhnh6N1Q767A/640?wx_fmt=jpeg"
+                                                                      data-type="jpeg" data-w="600"
+                                                                      style="width: 166px !important; height: auto !important; visibility: visible !important;"
+                                                                      _width="166px"
+                                                                      src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr6icUjV3PLDC61aRgWkicrcQLvR1zkNxEZ9pReLXRGePQxhnh6N1Q767A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                      crossorigin="anonymous" data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="1.4530386740331491" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr2MZuWde4z9CXgA17oCMMNjXmAyic8MjnfCrnNhc5HibpK6QpcTm26Micg/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="543"
+                                            style="text-align: center; width: 76px !important; height: auto !important; visibility: visible !important;"
+                                            _width="76px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr2MZuWde4z9CXgA17oCMMNjXmAyic8MjnfCrnNhc5HibpK6QpcTm26Micg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.75"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrbvuaPFkzknVMIHOAvEMEwoa2WToiaianSUIrKmwwjtl18IqBBBFrMCvw/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="400"
+                                                                                             style="text-align: center; width: 147px !important; height: auto !important; visibility: visible !important;"
+                                                                                             _width="147px"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrbvuaPFkzknVMIHOAvEMEwoa2WToiaianSUIrKmwwjtl18IqBBBFrMCvw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0"><span
+                                            style="text-align: center;">&nbsp;</span><img class="rich_pages "
+                                                                                          data-ratio="0.75"
+                                                                                          data-s="300,640"
+                                                                                          data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrCP4HPdQiaqC0h335X8Fop8DGfcDqAND2nVJCF22gDribOJOsKBSYKJVw/640?wx_fmt=jpeg"
+                                                                                          data-type="jpeg" data-w="640"
+                                                                                          style="text-align: center; width: 147px !important; height: auto !important; visibility: visible !important;"
+                                                                                          _width="147px"
+                                                                                          src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrCP4HPdQiaqC0h335X8Fop8DGfcDqAND2nVJCF22gDribOJOsKBSYKJVw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                          crossorigin="anonymous"
+                                                                                          data-fail="0"></p></section>
+                                <p style="text-indent: 2em;"><br></p>
+                                <p style="text-indent: 2em;">六、2004年，俞晓鸿创建了经国家人事部确认的我国教育技术学<span
+                                        style="color: rgb(255, 0, 0);">第1个</span>博士后科研工作站-华东师范大学苏州工业园区教育技术学博士后科研工作站，由此引领了我国教育技术学产-学-研紧密结合积极发展的浪潮。
+                                </p>
+                                <section class="" style="box-sizing: border-box;"><p><span
+                                        style="color: rgb(171, 25, 66);"></span></p>
+                                    <p><strong><span
+                                            style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">47 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿担任我国教育技术学第1个博士后工作站领导小组副组长(主持工作),2004</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">48 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">华东师大副校长(现任上海市副市长)陈群教授参加博后站揭牌仪式,2004</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">49 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">中央电教馆副馆长丁新同志参加博后站揭牌仪式,2004</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">50 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿组织研究小组对不同环境下课堂教学的有效性进行跟踪对比研究,2005</span>
+                                    </p>
+                                    <p style="text-align: left;"><img class="rich_pages " data-ratio="0.648"
+                                                                      data-s="300,640"
+                                                                      data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrcgQ3WibmJiboSX6xsGL98W9r8ujGerAYTxrsoNpkbPaxUXz4NbOEGfAg/640?wx_fmt=jpeg"
+                                                                      data-type="jpeg" data-w="500"
+                                                                      style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                      data-backw="141" data-backh="92"
+                                                                      data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrcgQ3WibmJiboSX6xsGL98W9r8ujGerAYTxrsoNpkbPaxUXz4NbOEGfAg/640?wx_fmt=jpeg"
+                                                                      _width="100%"
+                                                                      src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrcgQ3WibmJiboSX6xsGL98W9r8ujGerAYTxrsoNpkbPaxUXz4NbOEGfAg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                      crossorigin="anonymous" data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.75" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrUqTyT7YpN4jhVaLabJ7YfsKRep6k1iacJfgEtay4icZpQGbprKmuI9og/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="400"
+                                            style="width: 122px !important; height: auto !important; visibility: visible !important;"
+                                            _width="122px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrUqTyT7YpN4jhVaLabJ7YfsKRep6k1iacJfgEtay4icZpQGbprKmuI9og/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.75"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrvuLKZKVD1V3qO10shB9FlPf7Wicu5goDh7htzObltCxiacjF4bKA9z3Q/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="1280"
+                                                                                             style="width: 122px !important; height: auto !important; visibility: visible !important;"
+                                                                                             _width="122px"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrvuLKZKVD1V3qO10shB9FlPf7Wicu5goDh7htzObltCxiacjF4bKA9z3Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.5954077593032462" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr4G5y3wePO8YuKstkaquDUuZAkKgAkPY7CU5vtc7t5YRov6mwMbLtXw/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1263"
+                                            style="width: 238px !important; height: auto !important; visibility: visible !important;"
+                                            _width="238px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr4G5y3wePO8YuKstkaquDUuZAkKgAkPY7CU5vtc7t5YRov6mwMbLtXw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0"></p></section>
+                                <p style="text-indent: 2em;"><br></p>
+                                <p style="text-indent: 2em;">七、2006年，俞晓鸿设计并领导建设了<span style="color: rgb(255, 0, 0);">我国第1个</span>网上少年宫，引领了我国基于互联网的校外教育新变化。
+                                </p>
+                                <section class="" style="box-sizing: border-box;"><p><span
+                                        style="color: rgb(171, 25, 66);"></span></p>
+                                    <p><strong><span
+                                            style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">51 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿设计并领导建设了我国第1个网上少年宫,2006</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">52 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">我国第1个网上少年宫通过验收,2007</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">53 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿主持全国网上教学论坛,2006</span>
+                                    </p>
+                                    <p style="text-align: left;"><img class="rich_pages "
+                                                                      data-ratio="0.5016666666666667" data-s="300,640"
+                                                                      data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrRTMmYynhn2RiatFYtxcqkgoUune2aFSGFicBBsoic3HRXIqT58HTM7icIg/640?wx_fmt=jpeg"
+                                                                      data-type="jpeg" data-w="600"
+                                                                      style="width: 197px !important; height: auto !important; visibility: visible !important;"
+                                                                      _width="197px"
+                                                                      src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrRTMmYynhn2RiatFYtxcqkgoUune2aFSGFicBBsoic3HRXIqT58HTM7icIg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                      crossorigin="anonymous" data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.5328571428571428" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrJM8E587xic5MjcrdnDLibHqwsKo1FeBGI3lccvBCbY4R7NaQ2L8Eus5g/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="700"
+                                            style="width: 197px !important; height: auto !important; visibility: visible !important;"
+                                            _width="197px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrJM8E587xic5MjcrdnDLibHqwsKo1FeBGI3lccvBCbY4R7NaQ2L8Eus5g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.5875"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrSnqObNbtQIzwxnTnxlK6lvKdbIWK15O9ZbZey90ZlwoMTrjNQuP9NA/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="800"
+                                                                                             style="width: 196px !important; height: auto !important; visibility: visible !important;"
+                                                                                             _width="196px"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrSnqObNbtQIzwxnTnxlK6lvKdbIWK15O9ZbZey90ZlwoMTrjNQuP9NA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0"></p>
+                                    <p><span style="color: rgb(171, 25, 66);"></span><br></p></section>
+                                <p style="text-indent: 2em;">八、2011年，俞晓鸿作为浙江省<span style="color: rgb(255, 0, 0);">城乡结对同步课堂</span>教学的专家对该项工作进行了专业指导。2015年，俞晓鸿在四川省推出基于前概念精准备课的同步课堂教学成功范例。2019年，俞晓鸿对浙江省政府民生实事项目“千校结对”工程进行了现场指导，并通过公开课揭示了只有捕捉两端学生的前概念，才有可能<span
+                                        style="color: rgb(255, 0, 0);">摆脱电大模式</span>和作秀表演，实现<span
+                                        style="color: rgb(255, 0, 0);">精准备课</span><span style="color: rgb(255, 0, 0);">有效教学</span>，并使每一个学生都能获得增量。
+                                </p>
+                                <section class="" style="box-sizing: border-box;"><p><strong><span
+                                        style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">54 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿参加浙江省网络结对工作会议并在会上做专家报告,2010</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">55 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿指导四川省网络结对同步课堂教学公开课(数学),2015</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">56 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿指导浙江省千校结对教师捕捉前概念实现精准备课精准教学(语文),2019</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">57 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿指导浙江省千校结对教师捕捉前概念实现精准备课精准教学(科学),2019</span>
+                                    </p>
+                                    <p style="text-align: left;"><img class="rich_pages " data-ratio="0.66484375"
+                                                                      data-s="300,640"
+                                                                      data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvricPO2dG08l4qDXeK1FVqSJGq4O0Sv9zQtQH0QI0QgJp71x99ibhaIZSQ/640?wx_fmt=jpeg"
+                                                                      data-type="jpeg" data-w="1280"
+                                                                      style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                      data-backw="129" data-backh="86"
+                                                                      data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvricPO2dG08l4qDXeK1FVqSJGq4O0Sv9zQtQH0QI0QgJp71x99ibhaIZSQ/640?wx_fmt=jpeg"
+                                                                      _width="100%"
+                                                                      src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvricPO2dG08l4qDXeK1FVqSJGq4O0Sv9zQtQH0QI0QgJp71x99ibhaIZSQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                      crossorigin="anonymous" data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.66640625" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrqOxYczjibeZcURiclEhELBIJdKibgIibfLgOiclNIfH1jPvic8hR3Wiaq4wTA/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1280"
+                                            style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                            data-backw="129" data-backh="86"
+                                            data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrqOxYczjibeZcURiclEhELBIJdKibgIibfLgOiclNIfH1jPvic8hR3Wiaq4wTA/640?wx_fmt=jpeg"
+                                            _width="100%"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrqOxYczjibeZcURiclEhELBIJdKibgIibfLgOiclNIfH1jPvic8hR3Wiaq4wTA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.6653635652853792"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvriaxvzic0Cw4cyq2PkiaZVJ45oQv6aicicfMcTYly2W7zzYPJD5zHajn5AnA/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="1279"
+                                                                                             style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                                             data-backw="131"
+                                                                                             data-backh="87"
+                                                                                             data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvriaxvzic0Cw4cyq2PkiaZVJ45oQv6aicicfMcTYly2W7zzYPJD5zHajn5AnA/640?wx_fmt=jpeg"
+                                                                                             _width="100%"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvriaxvzic0Cw4cyq2PkiaZVJ45oQv6aicicfMcTYly2W7zzYPJD5zHajn5AnA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.50859375" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrqicliaajpnibm0fibTp2seoj4ziaIQ4SZPNayzN7jPnt0m1E6arn51rl9cw/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1280"
+                                            style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                            data-backw="174" data-backh="88"
+                                            data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrqicliaajpnibm0fibTp2seoj4ziaIQ4SZPNayzN7jPnt0m1E6arn51rl9cw/640?wx_fmt=jpeg"
+                                            _width="100%"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrqicliaajpnibm0fibTp2seoj4ziaIQ4SZPNayzN7jPnt0m1E6arn51rl9cw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0"></p>
+                                    <p><span style="color: rgb(171, 25, 66);"><br></span></p></section>
+                                <p style="text-indent: 2em;">九、2013年，俞晓鸿主持的“基础教育质量测评与提高系统研究及数字学习管理关键支撑技术应用示范”列入<span
+                                        style="color: rgb(255, 0, 0);">国家科技支撑计划</span>(2013BAH18F03)。2016年该项研究的成果《什么才是真正有效的教学——前概念原理\方法\案例\行动》由浙江大学出版社出版。俞晓鸿在该专著中提出了<span
+                                        style="color: rgb(255, 0, 0);">前概念原理</span>、教学配方、碎片化服务生态等重要的思想、方法、技术、应用案例，为全国中小学教师<span
+                                        style="color: rgb(255, 0, 0);">精准备课有效教学</span>提供了<span
+                                        style="color: rgb(255, 0, 0);">理论基础</span>和<span style="color: rgb(255, 0, 0);">成功范例</span>，由此引领了我国教育信息化从基础建设向本质应用的转变。
+                                </p>
+                                <section class="" style="box-sizing: border-box;"><p><span
+                                        style="color: rgb(171, 25, 66);"></span></p>
+                                    <p><strong><span
+                                            style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">58 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">这一学术成果饱含了俞晓鸿10余年坚持不懈的研究汗水,1996</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">59 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">这部专著属国家科技支撑计划(2013BAH18F03)研究成果,1996</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">60 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">中央电教馆馆长王珠珠同志和浙江省特级教师协会第1任会长徐承楠老师为该书作序,1996</span>
+                                    </p>
+                                    <p style="text-align: left;text-indent: 0em;"><img class="rich_pages "
+                                                                                       data-ratio="1.31640625"
+                                                                                       data-s="300,640"
+                                                                                       data-src="https://mmbiz.qpic.cn/mmbiz_png/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrkaAytcyMuz2ib8axPqSXVNuMCvibGTn1lVZyH5LBGZh6SJywr3tFIevQ/640?wx_fmt=png"
+                                                                                       data-type="png" data-w="1280"
+                                                                                       style="width: 109px !important; height: auto !important; visibility: visible !important;"
+                                                                                       _width="109px"
+                                                                                       src="https://mmbiz.qpic.cn/mmbiz_png/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrkaAytcyMuz2ib8axPqSXVNuMCvibGTn1lVZyH5LBGZh6SJywr3tFIevQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                       crossorigin="anonymous"
+                                                                                       data-fail="0">&nbsp;&nbsp;<img
+                                            class="rich_pages " data-ratio="0.715625" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrLzkrbyfdQhXJiakjVgtKtjtHiaa3ia45K8E2JkMTx7cOiaCcg5H7pHZVQw/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1280"
+                                            style="text-align: center; width: 201px !important; height: auto !important; visibility: visible !important;"
+                                            _width="201px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrLzkrbyfdQhXJiakjVgtKtjtHiaa3ia45K8E2JkMTx7cOiaCcg5H7pHZVQw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.7359375"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrGDibSSib9mrbicSm2SRzbOwVRnuYp29WqRH1sz2rh4icOF2XQT5VtberHw/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="1280"
+                                                                                             style="text-align: center; width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                                             data-backw="188"
+                                                                                             data-backh="138"
+                                                                                             data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrGDibSSib9mrbicSm2SRzbOwVRnuYp29WqRH1sz2rh4icOF2XQT5VtberHw/640?wx_fmt=jpeg"
+                                                                                             _width="100%"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrGDibSSib9mrbicSm2SRzbOwVRnuYp29WqRH1sz2rh4icOF2XQT5VtberHw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0"></p>
+                                    <p><span style="color: rgb(171, 25, 66);"></span><br></p></section>
+                                <p style="text-indent: 2em;">十、近20年来，俞晓鸿以<span
+                                        style="color: rgb(255, 0, 0);">虔行的脚步</span>，奔走在全国各地的城市学校、城乡结合部学校、农村偏远山区和矿区学校、革命老区学校、少数民族聚集区学校、留守儿童聚集区学校，除了进行学术报告，还手把手地指导从小学到中学，从数学语文科学到美术，从刚毕业的新教师到25年教龄的老教师，扎扎实实地开展<span
+                                        style="color: rgb(255, 0, 0);">基于学生前概念的精准备课和真正有效的教学</span>，尤其是还对部分乡村教师设计的前概念问题以及教学记录逐页进行批改、批注。这一虔诚的行动，令人肃然起敬，因为它正在我国中小学最底层推动着广大教师<span
+                                        style="color: rgb(255, 0, 0);">用一生的力气去上好每一堂课</span>，推动着课堂教学从无效或低效走向高效，推动着教学从经验走向科学。
+                                </p>
+                                <section class="" style="box-sizing: border-box;"><p><span
+                                        style="color: rgb(171, 25, 66);"></span></p>
+                                    <p><strong><span
+                                            style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">61 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿指导孟宏辉老师基于学生前概念精准教学,2010</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">62 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿指导肖俊老师基于学生前概念精准教学,2011</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">63 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿指导刚毕业的师范生吴明海准备省长来听课,2013</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">64 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿指导李欢老师基于学生前概念精准教学,2015</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">65 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在开化县专家工作站-长虹学校指导课堂教学,2018</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">66 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在杭州采荷三小指导公开课省教研室评价部方张松主任省教育报刊总社言宏首席编辑观摩,2019</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">67 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在激情演讲,2015</span></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">68 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在听课,2015</span></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">69 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在与老师们磨课,2015</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">70 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿批注老师们对前概念捕捉及教学的记录,2018</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">71 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在课后检验教学增量是否发生,2019</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">72 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿虔行在路上,2015</span></p>
+                                    <p style="text-align: left;"><img class="rich_pages " data-ratio="0.66484375"
+                                                                      data-s="300,640"
+                                                                      data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrX6zeeQ1xapQT7WkdJjsHPEIayd7iceR6LIiaNX58K1DlWfeMb8ouePGw/640?wx_fmt=jpeg"
+                                                                      data-type="jpeg" data-w="1280"
+                                                                      style="width: 137px !important; height: auto !important; visibility: visible !important;"
+                                                                      _width="137px"
+                                                                      src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrX6zeeQ1xapQT7WkdJjsHPEIayd7iceR6LIiaNX58K1DlWfeMb8ouePGw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                      crossorigin="anonymous" data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.66484375" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrkcrjLj7yICkBIABegiczhLYyoa9ibP7oM6uPvQ1s1YEAVReAz1oaOKyw/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1280"
+                                            style="text-align: center; width: 137px !important; height: auto !important; visibility: visible !important;"
+                                            _width="137px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrkcrjLj7yICkBIABegiczhLYyoa9ibP7oM6uPvQ1s1YEAVReAz1oaOKyw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.6640625"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrdCwpFtibnyLicjXIc0MVibkIckT9gDhEdYvVFKSEFP8nvvQBhD7icbHBrQ/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="1280"
+                                                                                             style="text-align: center; width: 140px !important; height: auto !important; visibility: visible !important;"
+                                                                                             _width="140px"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrdCwpFtibnyLicjXIc0MVibkIckT9gDhEdYvVFKSEFP8nvvQBhD7icbHBrQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.551" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrCib3MWibiaPho5hRWFfktTjfP7NvdVm9ovYO65EdbWSn90aSUCsbchpuw/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1000"
+                                            style="text-align: center; width: 167px !important; height: auto !important; visibility: visible !important;"
+                                            _width="167px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrCib3MWibiaPho5hRWFfktTjfP7NvdVm9ovYO65EdbWSn90aSUCsbchpuw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.6640625"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrWLZLuU4SusNapiaR3mBvPHhl8riboT7lWbjZicmUXpdXSUzWr0I6siaicSQ/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="1024"
+                                                                                             style="width: 138px !important; height: auto !important; visibility: visible !important;"
+                                                                                             _width="138px"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrWLZLuU4SusNapiaR3mBvPHhl8riboT7lWbjZicmUXpdXSUzWr0I6siaicSQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.3390625" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrbBoaKKHTohBgQu5iaux16Afc9fuKt3pk5oCYt0Ebj3soxOnbwoJvfkw/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1280"
+                                            style="width: 312px !important; height: auto !important; visibility: visible !important;"
+                                            _width="312px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrbBoaKKHTohBgQu5iaux16Afc9fuKt3pk5oCYt0Ebj3soxOnbwoJvfkw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.66640625"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrwE6FL8hlN3Htq4EUGHqdwoQKmexibDcJoriciaq4QNDshhNCJPeib9lUCQ/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="1280"
+                                                                                             style="width: 159px !important; height: auto !important; visibility: visible !important;"
+                                                                                             _width="159px"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrwE6FL8hlN3Htq4EUGHqdwoQKmexibDcJoriciaq4QNDshhNCJPeib9lUCQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0">&nbsp;<img
+                                            class="rich_pages img_loading" data-ratio="0.66640625" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrgs3oVBptReXdCyHbFk7iaiah4Vv29r9CfMSic7TtBXTMHfZtMmRf9cxdw/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1280"
+                                            style="width: 159px !important; height: 105.959px !important;"
+                                            _width="159px"
+                                            src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
+                                            crossorigin="anonymous"><img class="rich_pages img_loading"
+                                                                         data-ratio="0.66640625" data-s="300,640"
+                                                                         data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrNOLfHzEY0gzZyBY6jeLQtM5Ygc6heyF5Vib2uTK6NNSKFdNiaaTD1CCQ/640?wx_fmt=jpeg"
+                                                                         data-type="jpeg" data-w="1280"
+                                                                         style="text-align: center; width: 159px !important; height: 105.959px !important;"
+                                                                         _width="159px"
+                                                                         src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
+                                                                         crossorigin="anonymous">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.42890625" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrOwjic2ZFOmIXBwwNicGjqeib0EZWz57nMvXlREJyWCWAvS0RDmTIWTe1w/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1280"
+                                            style="width: 298px !important; height: auto !important; visibility: visible !important;"
+                                            _width="298px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrOwjic2ZFOmIXBwwNicGjqeib0EZWz57nMvXlREJyWCWAvS0RDmTIWTe1w/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img
+                                            class="rich_pages img_loading" data-ratio="0.75" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr2wGos9HMtg3p1lGPTEAJE7edAJqCNwibNiaOS9rR3gYBwEhagX3IzWyg/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="700"
+                                            style="width: 139px !important; height: 104.25px !important;" _width="139px"
+                                            src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
+                                            crossorigin="anonymous">&nbsp;<img class="rich_pages img_loading"
+                                                                               data-ratio="0.66640625" data-s="300,640"
+                                                                               data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrMW62kAMHiadwqaAicZxWq53nsV6st1x7CicxqknkvSWr0yzGDtWotiaNrA/640?wx_fmt=jpeg"
+                                                                               data-type="jpeg" data-w="1280"
+                                                                               style="width: 156px !important; height: 103.959px !important;"
+                                                                               _width="156px"
+                                                                               src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
+                                                                               crossorigin="anonymous"></p>
+                                    <p><span style="color: rgb(171, 25, 66);"><br></span></p></section>
+                                <p><span style="color: rgb(123, 12, 0);"><strong>主要经历：</strong></span></p>
+                                <p>国家科技支撑计划(2013BAH18F03)“基础教育质量测评与提高系统研究及数字学习管理关键支撑技术应用示范”课题组组长；</p>
+                                <p>华东师范大学苏州工业园区教育技术学博士后科研工作站(我国该专业第1个博士后科研工作站)领导小组副组长(唯一,主持工作)；</p>
+                                <p>教育部(广西师范大学)基础教育课程研究中心信息技术研究室主任；</p>
+                                <p>浙江大学电子服务研究中心现代教育质量监测与服务研究所所长、研究员；</p>
+                                <p>浙江省教育厅基础教育课程改革指导委员会评价组成员；</p>
+                                <p>广西壮族自治区教育厅教育信息化办公室专家组副组长(唯一)；</p>
+                                <p>中国物理学会第7届、第8届教学委员会委员，全国物理课件与素材中心主任；</p>
+                                <p>中国物理教育网(我国第1个学科教育网站)网络中心副主任(主持工作)。</p>
+                                <p>中国黄页(我国第1个商业网站,即阿里巴巴的前身)第1任总策划；</p>
+                                <p>科利华集团助理总裁(我国第1个教育类主板上市公司)核心业务-教育信息化事业部总经理；</p>
+                                <p>清华同方教育技术研究院学术委员会负责人；</p>
+                                <p>香港新华科技集团副总裁兼教育行业首席专家；</p>
+                                <p>浙江万朋教育科技有限公司副总裁兼产品与策略委员会主任等。</p>
+                                <section class="" style="box-sizing: border-box;"><p><strong><span
+                                        style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">73 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿担任科利华集团助理总裁兼教育信息化事业部总经理,2000</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">74 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在清华同方教育技术研究院指导各学科研究所设计教育产品,2002</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">75 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿在教育部基础教育课程研究中心给研究生上课,2004</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">76 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿深入广西农村偏远山区条件极为艰苦的教学点调研,2004</span>
+                                    </p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">77 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿任浙江大学现代教育质量监测与服务研究所所长,2009</span>
+                                    </p>
+                                    <p style="text-align: left;"><img class="rich_pages " data-ratio="0.67265625"
+                                                                      data-s="300,640"
+                                                                      data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr8kqEKuAZiahLSXhoWvHpYEQBAt2GBzpxVaTgiaxhEQK5iapwfsV4HoicUA/640?wx_fmt=jpeg"
+                                                                      data-type="jpeg" data-w="1280"
+                                                                      style="width: 163px !important; height: auto !important; visibility: visible !important;"
+                                                                      _width="163px"
+                                                                      src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvr8kqEKuAZiahLSXhoWvHpYEQBAt2GBzpxVaTgiaxhEQK5iapwfsV4HoicUA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                      crossorigin="anonymous" data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.75" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrs0byjeB0m49cNMLh9LYFU0wQYBhz0ic8IJzrqAsIbNV5ItsteE8Q9zA/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1024"
+                                            style="width: 145px !important; height: auto !important; visibility: visible !important;"
+                                            _width="145px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrs0byjeB0m49cNMLh9LYFU0wQYBhz0ic8IJzrqAsIbNV5ItsteE8Q9zA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.5"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrEKPHUaib7D2PECK1iaUEWrGbGCOz2PDiaTaibJGCa1Bdbgdm4hHnVgpvjw/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="500"
+                                                                                             style="text-align: center; width: 216px !important; height: auto !important; visibility: visible !important;"
+                                                                                             _width="216px"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrEKPHUaib7D2PECK1iaUEWrGbGCOz2PDiaTaibJGCa1Bdbgdm4hHnVgpvjw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.75" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrH0RbjpDQa7Sthlfl2uITDUbIJaN5kXXoH7cDWSrI6icBRd0kkXDR03Q/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="640"
+                                            style="width: 148px !important; height: auto !important; visibility: visible !important;"
+                                            _width="148px"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrH0RbjpDQa7Sthlfl2uITDUbIJaN5kXXoH7cDWSrI6icBRd0kkXDR03Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0">&nbsp;<img class="rich_pages "
+                                                                                             data-ratio="0.75"
+                                                                                             data-s="300,640"
+                                                                                             data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrT21BlSFzVQ5c1bmQ3OVaRm6ZzX6htIPhDOakPNMLRiaHahnHpSAzU2g/640?wx_fmt=jpeg"
+                                                                                             data-type="jpeg"
+                                                                                             data-w="1024"
+                                                                                             style="text-align: center; width: 148px !important; height: auto !important; visibility: visible !important;"
+                                                                                             _width="148px"
+                                                                                             src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrT21BlSFzVQ5c1bmQ3OVaRm6ZzX6htIPhDOakPNMLRiaHahnHpSAzU2g/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                                             crossorigin="anonymous"
+                                                                                             data-fail="0"></p>
+                                    <p><span style="color: rgb(171, 25, 66);"></span><br></p></section>
+                                <p><strong><span style="color: rgb(123, 12, 0);">综合评议：</span></strong></p>
+                                <p style="text-indent: 2em;">俞晓鸿先生具有较为深厚的<span
+                                        style="color: rgb(255, 0, 0);">教育情怀</span>、较为宽广的<span
+                                        style="color: rgb(255, 0, 0);">学术视野</span>、较为扎实的<span
+                                        style="color: rgb(255, 0, 0);">研究功底</span>，具有教育理论-教育实践-教育产品设计-教育上市公司运作四方面复合的较为<span
+                                        style="color: rgb(255, 0, 0);">丰富的履历和经验</span>，是我国教育IT行业极有影响力的知名专家和领军人物。</p>
+                                <section class="" style="box-sizing: border-box;"><p><strong><span
+                                        style="font-size:15px;font-family:宋体;color:green;">照片：</span></strong></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">79 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿短片 虔行的脚步</span></p>
+                                    <p><span style="font-size:15px;font-family:宋体;color:green;">80 </span><span
+                                            style="font-size:15px;font-family:宋体;color:green;">俞晓鸿板书 用一生的力气去上好每一堂课</span>
+                                    </p>
+                                    <p style="text-align: left;"><img class="rich_pages " data-ratio="0.4484375"
+                                                                      data-s="300,640"
+                                                                      data-src="https://mmbiz.qpic.cn/mmbiz_png/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrIic8KQuLZVEHGuWra7sX80C8XWQ81TgHyM7gB1PJEKA7ybiaH7cGm8CQ/640?wx_fmt=png"
+                                                                      data-type="png" data-w="1280"
+                                                                      style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                                                      data-backw="220" data-backh="99"
+                                                                      data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_png/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrIic8KQuLZVEHGuWra7sX80C8XWQ81TgHyM7gB1PJEKA7ybiaH7cGm8CQ/640?wx_fmt=png"
+                                                                      _width="100%"
+                                                                      src="https://mmbiz.qpic.cn/mmbiz_png/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrIic8KQuLZVEHGuWra7sX80C8XWQ81TgHyM7gB1PJEKA7ybiaH7cGm8CQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                                                      crossorigin="anonymous" data-fail="0">&nbsp;<img
+                                            class="rich_pages " data-ratio="0.29765625" data-s="300,640"
+                                            data-src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrP2Qosn9Rm7IWITsjfZllFNsv5aKibrbLZnoep79Wdz2MQIw8T6kLdcw/640?wx_fmt=jpeg"
+                                            data-type="jpeg" data-w="1280"
+                                            style="width: 100% !important; height: auto !important; visibility: visible !important;"
+                                            data-backw="331" data-backh="98"
+                                            data-before-oversubscription-url="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrP2Qosn9Rm7IWITsjfZllFNsv5aKibrbLZnoep79Wdz2MQIw8T6kLdcw/640?wx_fmt=jpeg"
+                                            _width="100%"
+                                            src="https://mmbiz.qpic.cn/mmbiz_jpg/boVic1cguRVDbcatQGyHzKu1gAHFmdHvrP2Qosn9Rm7IWITsjfZllFNsv5aKibrbLZnoep79Wdz2MQIw8T6kLdcw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1"
+                                            crossorigin="anonymous" data-fail="0"></p>
+                                    <p><span style="color: rgb(171, 25, 66);"><br></span></p></section>
+                                <p><strong><span style="color: rgb(123, 12, 0);">链接：<br></span></strong><a
+                                        href="https://mp.weixin.qq.com/s?__biz=MzA4Mjk5Njc0MA==&amp;mid=2652230918&amp;idx=1&amp;sn=41eaa66552cdc28554b36d74090bd353&amp;chksm=841c4e6db36bc77bc15b902353d5d7ed841a224660c185fc29613658e3172a3431bb8fb1189f&amp;mpshare=1&amp;scene=21&amp;srcid=&amp;key=4cda405140058ebd9fec7cf40c1016a3a5e6a9d7fd9cb62423542b99bd6f28253dd7ad11f6339513dd1cf16251d79222413a2b58e98b762815bddc852f55f5e1f382afdaf63f23cb632943b56bcdd2a0&amp;ascene=1&amp;uin=MTY1NTg5NDg2NA==&amp;devicetype=Windows 7&amp;version=62060739&amp;lang=zh_CN&amp;pass_ticket=nVxGco1ow0r2fxcxjbqXPPIJLTmTUDBE2CRrg iYbR9HfOhg83rfRh fl3vnl5nD#wechat_redirect"
+                                        target="_blank" data-linktype="2"
+                                        style="color: rgb(0, 0, 0);text-decoration: underline;"><span
+                                        style="color: rgb(0, 0, 0);font-size: 15px;font-family: 宋体;">【1】什么才是真正有效的教学&nbsp; 浙大教材服务网[官]</span></a><span
+                                        style="color: rgb(255, 0, 0);"><br></span></p>
+                                <section class="" style="box-sizing: border-box;"><p><span
+                                        style="font-family: 宋体;font-size: 15px;color: rgb(0, 0, 0);">【2】虔行的脚步&nbsp;&nbsp;腾讯视频[官]</span>
+                                </p>
+                                    <p style="margin-bottom: 0.1px;margin-left: 36px;"><br></p>
+                                    <p><strong><span style="color: rgb(123, 12, 0);">联系：</span></strong></p>
+                                    <p style="box-sizing: border-box;line-height: 1.5em;">手机\微信：18806521683</p>
+                                    <p style="box-sizing: border-box;line-height: 1.5em;">Q Q\邮箱：78419000@qq.com</p><br>
+                                </section>
+                            </section>
+                        </section>
+                        <p><br></p>
+                    </div>
+                    <script nonce="" type="text/javascript">
+                        var first_sceen__time = (+new Date());
+
+                        if ("" == 1 && document.getElementById('js_content')) {
+                            document.getElementById('js_content').addEventListener("selectstart", function (e) {
+                                e.preventDefault();
+                            });
+                        }
+
+
+                        (function () {
+                            if (navigator.userAgent.indexOf("WindowsWechat") != -1) {
+                                var link = document.createElement('link');
+                                var head = document.getElementsByTagName('head')[0];
+                                link.rel = 'stylesheet';
+                                link.type = 'text/css';
+                                link.href = "//res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg_new/winwx473e11.css";
+                                head.appendChild(link);
+                            }
+                        })();
+                    </script>
+
+
+                    <div class="ct_mpda_wrp" id="js_sponsor_ad_area" style="display: none;"></div>
+
+
+                    <div class="read-more__area" id="js_more_read_area" style="display:none;">
+
+                    </div>
+
+
+                    <div class="reward_area tc reward_area_primary" id="js_preview_reward_author" style="display:none;">
+                        <div class="reward-avatar" style="display: none;" id="js_preview_reward_author_avatar">
+                            <img src="" alt="" id="js_preview_reward_author_head">
+                        </div>
+
+                        <div class="reward-author" id="js_preview_reward_author_name"></div>
+                        <p class="reward_tips" id="js_preview_reward_author_wording" style="display:none;"></p>
+                        <p class="reward_button_wrp">
+
+                      <span class="reward_pop_panel">
+                        <img src="https://res.wx.qq.com/mpres/zh_CN/htmledition/pages/home/index/pic_mp_app4290ba.png"
+                             alt="">
+                        <strong>扫一扫下载订阅号助手，用手机发文章</strong>
+                      </span>
+                            <a class="reward_button" id="js_preview_reward_author_link" href="##"><span
+                                    id="js_preview_reward_link_text">赞赏</span></a>
+                        </p>
+                    </div>
+
+                    <div class="reward_qrcode_area reward_area tc" id="js_preview_reward_qrcode" style="display:none;">
+                        <p class="tips_global">长按二维码向我转账</p>
+                        <p id="js_preview_reward_ios_wording" class="reward_tips" style="display:none;"></p>
+                        <span class="reward_qrcode_img_wrp"><img class="reward_qrcode_img"
+                                                                 src="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/pic/appmsg/pic_reward_qrcode.2x42f400.png"></span>
+                        <p class="tips_global">受苹果公司新规定影响，微信 iOS 版的赞赏功能被关闭，可通过二维码转账支持公众号。</p>
+                    </div>
+                </div>
+
+
+                <ul id="js_hotspot_area" class="article_extend_area"></ul>
+
+
+                <div class="rich_media_tool" id="js_toobar3">
+
+                    <div class="weui-flex">
+                        <div class="weui-flex__item">
+
+                            <div id="js_read_area3" class="media_tool_meta tips_global_primary meta_primary"
+                                 style="display:none;">
+                                <span id="readTxt">阅读</span>
+                                <span id="readNum3"></span>
+                            </div>
+                        </div>
+
+                        <span style="display:none;" class="media_tool_meta meta_extra meta_praise" id="like_old">
+          <i class="icon_praise_gray"></i><span class="praise_num" id="likeNum_old"></span>
+      </span>
+
+
+                        <span style="visibility: hidden;" class="media_tool_meta meta_extra meta_like" id="like3">
+    <button class="like_btn" id="js_like_btn">
+      <span id="js_like_wording"> 在看</span><span class="like_num" id="likeNum3"></span>
+    </button>
+  </span>
+
+
+                    </div>
+                </div>
+
+                <div style="display:none">
+                    <div class="weui-mask"></div>
+                    <div class="weui-dialog weui-dialog_haokan">
+                        <div class="weui-dialog__hd"><strong class="weui-dialog__title"
+                                                             id="educate_title">已同步到看一看</strong></div>
+                        <div class="weui-dialog__bd">
+                        </div>
+                        <div class="weui-dialog__ft" id="educate_btn" style="display: none">
+                            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default"
+                               id="js_cancel">取消</a>
+                            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary"
+                               id="js_confirm">发送</a>
+                        </div>
+                        <div class="weui-dialog__ft" id="educate_btn2" style="display: none">
+                            <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary"
+                               id="js_acknowledge">我知道了</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: none;" id="js_like_educate" class="like_skin_primary like_comment_primary_pop">
+                    <div id="js_like_educate_wrapper" class="like_comment_primary_wrp like_comment_primary_pos_top">
+                        <div class="like_comment_primary_inner">
+                            <div class="like_comment_primary_hd">
+                                <h4 class="like_comment_primary_title">
+                                    朋友会在“发现-看一看”看到你“在看”的内容 </h4>
+                                <button id="js_b_like_confirm" class="like_comment_primary_btn">确定</button>
+                            </div>
+                            <div class="like_comment_primary_bd">
+                                <img class="pic_haokan"
+                                     src="//res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/pic/appmsg/pic_haokan4516f7.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="like_comment_primary_mask" id="js_mask_3"></div>
+                </div>
+
+
+                <div class="like_comment_wrp" id="js_a_like_comment" style="display: none;">
+                    <div class="like_comment_inner">
+                        <div class="like_comment_hd" style="display:none" id="js_like_title"></div>
+                        <div class="like_comment_bd">
+                            <div class="tips_global_primary like_comment_tips">
+                                <i class="weui-icon-success"></i><i class="icon-success-primary"></i>已同步到看一看<a
+                                    href="javascript:;" class="like_comment_share_link" id="js_a_like_comment_share">写下你的想法</a>
+                            </div>
+                        </div>
+                        <div class="like_comment_ft">
+                            <span id="js_a_like_comment_msg" class="like_comment_msg" style="visibility:hidden">最多200字，当前共<span
+                                    id="js_a_like_current_cnt"></span>字</span>
+                            <button class="like_comment_btn" disabled="disabled" id="js_a_like_confirm">发送</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="js_like_toast" style="display: none;">
+                    <div class="weui-mask_transparent"></div>
+                    <div class="weui-toast">
+                        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+                        <p class="weui-toast__content" id="js_toast_msg">已发送</p>
+                    </div>
+                </div>
+
+
+                <div style="display: none;" id="js_b_comment_panel" class="like_comment_primary_pop">
+                    <div class="like_comment_primary_wrp" id="js_b_wrp">
+                        <div class="like_comment_primary_inner">
+                            <div class="like_comment_primary_hd">
+                                <h4 class="like_comment_primary_title">
+                                    朋友将在看一看看到 </h4>
+                                <button id="js_b_like_confirm" class="like_comment_primary_btn">确定</button>
+                            </div>
+                            <div id="js_b_comment_text_first" class="like_comment_primary_bd">
+        <span class="tips_global_primary">
+          写下你的想法...        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="like_comment_primary_mask" id="js_mask_1"></div>
+                </div>
+
+                <div style="display: none;" id="js_b_comment_final">
+                    <div class="like_comment_primary_wrp editing" id="js_comment_wrp">
+                        <div class="like_comment_primary_inner">
+                            <div class="like_comment_primary_hd">
+                                <button class="like_comment_primary_cancel" id="js_b_comment_cancel">取消</button>
+                                <h4 class="like_comment_primary_title"> 发布到看一看 </h4>
+                                <button class="like_comment_primary_btn" id="js_b_comment_confirm">确定</button>
+                            </div>
+                            <div class="like_comment_primary_bd">
+                                <textarea class="like_comment_textarea weui-textarea" placeholder="写下你的想法..."
+                                          id="js_b_comment_text_second"></textarea>
+                            </div>
+                            <span class="like_comment_msg" id="js_b_like_comment_msg" style="visibility: hidden;">最多200字，当前共<span
+                                    id="js_b_like_current_cnt"></span>字</span>
+                        </div>
+                    </div>
+                    <div class="like_comment_primary_mask" id="js_mask_2"></div>
+                </div>
+
+                <div id="js_loading" style=" display: none;">
+                    <div class="weui-mask_transparent"></div>
+                    <div class="weui-toast">
+                        <i class="weui-loading weui-icon_toast"></i>
+                        <p class="weui-toast__content">发送中</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="rich_media_area_primary sougou" id="sg_tj" style="display:none"></div>
+
+
+        <div class="rich_media_area_extra">
+            <div class="rich_media_area_extra_inner">
+
+                <div id="js_share_appmsg">
+                </div>
+
+
+                <div class="mpda_bottom_container" id="js_bottom_ad_area" style="display: none;"></div>
+
+                <div id="js_iframetest" style="display:none;"></div>
+
+                <div class="rich_media_extra rich_media_extra_discuss" id="js_cmt_container" style="display:none">
+
+
+                    <div class="discuss_mod" id="js_friend_cmt_area" style="display:none">
+
+
+                    </div>
+
+                    <div class="discuss_mod" id="js_preview_cmt" style="display:none">
+                        <div class="discuss_container">
+                            <div class="mod_title_context">
+                                <p class="discuss_icon_tips tc">
+                                    <a href="javascript:;" id="js_preview_cmt_write">留言</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="js_pc_qr_code" class="qr_code_pc_outer" style="display: block;">
+            <div class="qr_code_pc_inner">
+                <div class="qr_code_pc">
+                    <img id="js_pc_qr_code_img" class="qr_code_pc_img"
+                         src="/mp/qrcode?scene=10000004&amp;size=102&amp;__biz=MzI1NzU4ODE1Nw==&amp;mid=100000062&amp;idx=1&amp;sn=881ed16090ffcce6cc068994e895f3fa&amp;send_time=">
+                    <p>微信扫一扫<br>关注该公众号</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
